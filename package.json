@@ -2,7 +2,9 @@
   "name": "assignment02-valeriaponomareva-schaniakaradaghi",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "ui-mode": "npx playwright test --ui"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

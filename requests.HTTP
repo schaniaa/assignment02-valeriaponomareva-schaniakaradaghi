@@ -1,0 +1,35 @@
+### 
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "username": "tester01",
+    "password": "GteteqbQQgSr88SwNExUQv2ydb7xuf8c"
+}
+
+###
+GET http://localhost:3000/api/rooms
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"9d4bcc489e02b3764055a5d8f11b35a0"}
+
+###
+POST http://localhost:3000/api/room/new
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"1ec2099a6e9c50bd166c915e47dc4dc4"}
+
+{
+    "features": [
+        "ensuite",
+        "sea_view"
+    ],
+    "category": "single",
+    "number": "1514",
+    "floor": "1145",
+    "available": true,
+    "price": "15151515"
+}
+
+###
+DELETE http://localhost:3000/api/room/7
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"f190fbe9cae0634014401b66341f8d39"}
