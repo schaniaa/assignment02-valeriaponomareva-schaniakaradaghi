@@ -33,3 +33,21 @@ export const generateClientData = () => {
         telephone
     }
 };
+
+export const generateReservationData = () => {
+    const startDate = faker.date.future()
+    const endDate = faker.date.future()
+    const formatDate = (date) => {
+        return date.toISOString().split('T')[0];
+    };
+    const client = 2;
+    const room = 1;
+    const bill = 1;
+    return {
+        start: formatDate(startDate),   
+        end: formatDate(endDate),
+        client,
+        room,
+        bill
+    }
+};

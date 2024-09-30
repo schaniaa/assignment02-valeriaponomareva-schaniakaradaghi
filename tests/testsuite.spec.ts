@@ -88,4 +88,11 @@ test('Update client Information', async ({ request }) => {
 });
 
 });
+
+test('Get All Reservations', async ({ request }) => {
+    const getAllReservation = await apiHelper.getAllReservation(request);
+    expect(getAllReservation.ok()).toBeTruthy();
+    expect (getAllReservation.status()).toBe(200);
+  });
+
 });

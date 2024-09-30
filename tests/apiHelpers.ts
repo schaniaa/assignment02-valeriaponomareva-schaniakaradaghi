@@ -86,6 +86,11 @@ export class APIHelper {
         return response;
     }
 
+    async getByID(request: APIRequestContext, clientId: number){
+        const response = await request.get(`${this.baseUrl}/client/${clientId}`);
+        return response;
+    }
+
     async getAllClients(request: APIRequestContext) {
         const response = await request.get(`${this.baseUrl}/clients`, 
             {
@@ -128,4 +133,32 @@ export class APIHelper {
         });
         return response;
     }
+
+    async deleteClientById(request: APIRequestContext, clientId: number) {
+        const response = await request.delete(`${this.baseUrl}/Client/${clientId}`, 
+            {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.username,
+                    token: this.token
+                })
+            }}
+        );
+        return response;
+    }
+
+    async getAllReservation(request: APIRequestContext,) {
+        const response = await request.get(`${this.baseUrl}/reservations`,  
+            {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.username,
+                    token: this.token
+                })
+            },
+        });
+        return response;
+        }
 }
