@@ -57,4 +57,18 @@ export class APIHelper {
         });
         return response;
     }
+    
+    async deleteRoomById(request: APIRequestContext) {
+        const response = await request.delete(`${this.baseUrl}/room/2`, 
+            {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.username,
+                    token: this.token
+                })
+            }}
+        );
+        return response;
+    }
 }

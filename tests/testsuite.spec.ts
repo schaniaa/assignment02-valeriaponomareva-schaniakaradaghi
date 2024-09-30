@@ -25,7 +25,7 @@ test.describe('Test Suite Hotel', () => {
     });
 
     test('Update Room Information', async ({ request }) => {
-        const payload = generateRoomsData();
+        const payload = generateRoomsData(); 
         const updateRoom = await apiHelper.updateRoom(request, payload);
         expect(updateRoom.ok()).toBeTruthy();
         expect (updateRoom.status()).toBe(200);
@@ -35,6 +35,13 @@ test.describe('Test Suite Hotel', () => {
             price: payload.price,
             id: payload.id
     });
+
+});
+
+test('Delete Room By ID', async ({ request }) => {
+    const deleteRoomById = await apiHelper.deleteRoomById(request);
+    expect(deleteRoomById.ok()).toBeTruthy();
+    expect (deleteRoomById.status()).toBe(200);
 });
 
 });
