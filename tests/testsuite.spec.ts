@@ -44,4 +44,19 @@ test('Delete Room By ID', async ({ request }) => {
     expect (deleteRoomById.status()).toBe(200);
 });
 
+test('Create Room', async ({ request }) => {
+    const payload = generateRoomsData();
+    const createRoom = await apiHelper.createRoom(request, payload);
+    expect(createRoom.ok()).toBeTruthy();
+        expect.objectContaining({
+        number: payload.number,
+        floor: payload.floor,
+        price: payload.price,
+        available: payload.available,
+        features: expect.arrayContaining(payload.features),
+        category: payload.category
+});
+
+});
+
 });

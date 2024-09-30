@@ -9,7 +9,7 @@ export class APIHelper {
         this.baseUrl = baseUrl;
     }
 
-    // Login för att autentisera och hämta token
+
     async login(request: APIRequestContext) {
         const response = await request.post('http://localhost:3000/api/login', {
             headers: {
@@ -26,7 +26,6 @@ export class APIHelper {
         return response;
     }
 
-    // Skapa gemensamma headers
     private getAuthHeaders() {
         return {
             'Content-Type': 'application/json',
@@ -37,11 +36,26 @@ export class APIHelper {
         };
     }
 
-    // GET all rooms
+
     async getAllRooms(request: APIRequestContext) {
         return request.get(`${this.baseUrl}/rooms`, {
             headers: this.getAuthHeaders()
         });
+    }
+
+    async createRoom(request: APIRequestContext, payload: object) {
+        const response = await request.post(`${this.baseUrl}/room/new`, 
+            {
+                headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.username,
+                    token: this.token
+                })
+            },
+            data: JSON.stringify(payload) 
+        });
+        return response;
     }
 
     async updateRoom(request: APIRequestContext, payload: object) {
