@@ -114,4 +114,18 @@ export class APIHelper {
         });
         return response;
     }
+
+    async updateClient(request: APIRequestContext, payload: object) {
+        const response = await request.put(`${this.baseUrl}/client/1`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.username,
+                    token: this.token
+                })
+            },
+            data: JSON.stringify(payload) 
+        });
+        return response;
+    }
 }

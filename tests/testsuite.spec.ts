@@ -76,4 +76,16 @@ test('Get all Clients', async ({ request }) => {
 });
 });
 
+test('Update client Information', async ({ request }) => {
+    const payload = generateClientData(); 
+    const updateClient = await apiHelper.updateClient(request, payload);
+    expect(updateClient.ok()).toBeTruthy();
+    expect (updateClient.status()).toBe(200);
+    expect.objectContaining({
+        name: payload.name,
+        email: payload.email,
+        telephone: payload.telephone
+});
+
+});
 });
