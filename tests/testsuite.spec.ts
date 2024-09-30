@@ -1,7 +1,6 @@
 import { test, expect, APIResponse } from '@playwright/test';
 import { APIHelper } from './apiHelpers';
 import { generateClientData, generateReservationData, generateRoomsData } from './testData';
-import { stringify } from 'querystring';
 
 
 const BASE_URL = `${process.env.BASE_URL}`;
@@ -9,7 +8,6 @@ const BASE_URL = `${process.env.BASE_URL}`;
 test.describe('Test Suite Hotel', () => {
     let apiHelper: APIHelper;
     
-    // Logga in innan alla tester körs
     test.beforeAll(async ({ request }) => {
         apiHelper = new APIHelper(BASE_URL);
         const login = await apiHelper.login(request);
@@ -17,7 +15,6 @@ test.describe('Test Suite Hotel', () => {
         expect(login.status()).toBe(200);
     });
 
-    // Test för att hämta alla rum
     test('Get all Rooms', async ({ request }) => {
         const getAllRooms = await apiHelper.getAllRooms(request);
         expect(getAllRooms.ok()).toBeTruthy();
