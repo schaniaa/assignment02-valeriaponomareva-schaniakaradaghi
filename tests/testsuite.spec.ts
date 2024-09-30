@@ -1,6 +1,6 @@
 import { test, expect, APIResponse } from '@playwright/test';
 import { APIHelper } from './apiHelpers';
-import { generateClientData, generateRoomsData } from './testData';
+import { generateClientData, generateReservationData, generateRoomsData } from './testData';
 import { stringify } from 'querystring';
 
 
@@ -95,4 +95,16 @@ test('Get All Reservations', async ({ request }) => {
     expect (getAllReservation.status()).toBe(200);
   });
 
+test('Create Reservation', async ({ request }) => {
+    const payload = generateReservationData();
+    const createReservation = await apiHelper.createReservation(request, payload);
+    expect(createReservation.ok()).toBeTruthy();
+     expect.objectContaining({
+        start: payload.start,
+        end: payload.end,
+        client: payload.client,
+        room: payload.room,
+        bill: payload.bill
+    });
+});
 });
