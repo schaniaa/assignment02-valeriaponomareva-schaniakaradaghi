@@ -59,4 +59,10 @@ test('Create Room', async ({ request }) => {
 
 });
 
+test('Get all Clients', async ({ request }) => {
+    const getAllClients = await apiHelper.getAllClients(request);
+    expect(getAllClients.ok()).toBeTruthy();
+    expect (getAllClients.status()).toBe(200);
+  });
+
 });

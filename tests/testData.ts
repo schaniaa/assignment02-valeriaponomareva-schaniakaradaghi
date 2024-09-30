@@ -22,3 +22,14 @@ export const generateRoomsData = () => {
         id
     };
 };
+
+export const generateClientData = () => {
+    const name = faker.person.fullName();
+    const email = faker.internet.email(); 
+    const telephone = faker.phone.number();
+    return {
+        name,
+        email,
+        telephone
+    }
+};

@@ -85,4 +85,18 @@ export class APIHelper {
         );
         return response;
     }
+
+    async getAllClients(request: APIRequestContext) {
+        const response = await request.get(`${this.baseUrl}/clients`, 
+            {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.username,
+                    token: this.token
+                })
+            }}
+        );
+        return response;
+    }
 }
