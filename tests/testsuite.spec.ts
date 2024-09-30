@@ -107,4 +107,19 @@ test('Create Reservation', async ({ request }) => {
         bill: payload.bill
     });
 });
+
+test('Update reservation', async ({ request }) => {
+    const payload = generateReservationData(); 
+    const updateReservation = await apiHelper.updateReservation(request, payload);
+    expect(updateReservation.ok()).toBeTruthy();
+    expect (updateReservation.status()).toBe(200);
+    expect.objectContaining({
+        start: payload.start,
+        end: payload.end,
+        client: payload.client,
+        room: payload.room,
+        bill: payload.bill
+});
+
+});
 });
